@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/nutritionist-website/static/css/main.c39dd472.css",
-    "main.js": "/nutritionist-website/static/js/main.ff9338d2.js",
-    "static/js/453.b2ffb430.chunk.js": "/nutritionist-website/static/js/453.b2ffb430.chunk.js",
-    "index.html": "/nutritionist-website/index.html",
-    "main.c39dd472.css.map": "/nutritionist-website/static/css/main.c39dd472.css.map",
-    "main.ff9338d2.js.map": "/nutritionist-website/static/js/main.ff9338d2.js.map",
-    "453.b2ffb430.chunk.js.map": "/nutritionist-website/static/js/453.b2ffb430.chunk.js.map"
+    "main.css": "/rim-website/static/css/main.c39dd472.css",
+    "main.js": "/rim-website/static/js/main.5d745721.js",
+    "static/js/453.b2ffb430.chunk.js": "/rim-website/static/js/453.b2ffb430.chunk.js",
+    "index.html": "/rim-website/index.html",
+    "main.c39dd472.css.map": "/rim-website/static/css/main.c39dd472.css.map",
+    "main.5d745721.js.map": "/rim-website/static/js/main.5d745721.js.map",
+    "453.b2ffb430.chunk.js.map": "/rim-website/static/js/453.b2ffb430.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c39dd472.css",
-    "static/js/main.ff9338d2.js"
+    "static/js/main.5d745721.js"
   ]
 }
