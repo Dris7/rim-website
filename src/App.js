@@ -91,7 +91,7 @@ const App = () => {
           <div className="text-2xl font-bold text-[#3D5919]">Dt. Rim Ajibe</div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             <a href="#accueil" className="text-[#3D5919] hover:text-[#D6E2B4] transition-colors">Accueil</a>
             <a href="#services" className="text-[#3D5919] hover:text-[#D6E2B4] transition-colors">Services</a>
             <a href="#qui-suis-je" className="text-[#3D5919] hover:text-[#D6E2B4] transition-colors">Qui suis-je ?</a>
