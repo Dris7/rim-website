@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, Check, ArrowRight, Calendar, Mail, Phone, MapPin, Instagram, Facebook, Star, Users, Heart, Target, Clock, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 
+
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('accueil');
