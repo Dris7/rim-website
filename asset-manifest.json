@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/rim-website/static/css/main.90d2a5e1.css",
-    "main.js": "/rim-website/static/js/main.ef13d23d.js",
+    "main.css": "/rim-website/static/css/main.ebe9e133.css",
+    "main.js": "/rim-website/static/js/main.1bcca780.js",
     "static/js/453.b2ffb430.chunk.js": "/rim-website/static/js/453.b2ffb430.chunk.js",
     "index.html": "/rim-website/index.html",
-    "main.90d2a5e1.css.map": "/rim-website/static/css/main.90d2a5e1.css.map",
-    "main.ef13d23d.js.map": "/rim-website/static/js/main.ef13d23d.js.map",
+    "main.ebe9e133.css.map": "/rim-website/static/css/main.ebe9e133.css.map",
+    "main.1bcca780.js.map": "/rim-website/static/js/main.1bcca780.js.map",
     "453.b2ffb430.chunk.js.map": "/rim-website/static/js/453.b2ffb430.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.90d2a5e1.css",
-    "static/js/main.ef13d23d.js"
+    "static/css/main.ebe9e133.css",
+    "static/js/main.1bcca780.js"
   ]
 }
