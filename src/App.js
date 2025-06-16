@@ -3,6 +3,10 @@ import { ChevronDown, Menu, X, Check, ArrowRight, Calendar, Mail, Phone, MapPin,
 import { ArrowLeft, Tag, Share2, BookOpen, User } from 'lucide-react';
 // Header Component
 const Header = ({ scrolled, isMenuOpen, setIsMenuOpen }) => {
+  const handleMenuItemClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -28,12 +32,12 @@ const Header = ({ scrolled, isMenuOpen, setIsMenuOpen }) => {
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="px-4 py-2 space-y-2">
-            <a href="#accueil" className="block py-2 text-[#3D5919] montserrat-medium">Accueil</a>
-            <a href="#services" className="block py-2 text-[#3D5919] montserrat-medium">Services</a>
-            <a href="#qui-suis-je" className="block py-2 text-[#3D5919] montserrat-medium">Qui suis-je ?</a>
-            <a href="#ressources" className="block py-2 text-[#3D5919] montserrat-medium">Ressources</a>
-            <a href="#blog" className="block py-2 text-[#3D5919] montserrat-medium">Blog</a>
-            <a href="#rendez-vous" className="block py-2 bg-[#3D5919] text-white text-center rounded-full montserrat-medium">Rendez-vous</a>
+            <a href="#accueil" onClick={handleMenuItemClick} className="block py-2 text-[#3D5919] montserrat-medium">Accueil</a>
+            <a href="#services" onClick={handleMenuItemClick} className="block py-2 text-[#3D5919] montserrat-medium">Services</a>
+            <a href="#qui-suis-je" onClick={handleMenuItemClick} className="block py-2 text-[#3D5919] montserrat-medium">Qui suis-je ?</a>
+            <a href="#ressources" onClick={handleMenuItemClick} className="block py-2 text-[#3D5919] montserrat-medium">Ressources</a>
+            <a href="#blog" onClick={handleMenuItemClick} className="block py-2 text-[#3D5919] montserrat-medium">Blog</a>
+            <a href="#rendez-vous" onClick={handleMenuItemClick} className="block py-2 bg-[#3D5919] text-white text-center rounded-full montserrat-medium">Rendez-vous</a>
           </div>
         </div>
       )}
@@ -1294,54 +1298,54 @@ const BlogSection = () => {
 
       {/* Blog Post Modal */}
       {selectedPost && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-gray-200">
-              <div className="flex justify-between items-start">
-                <div className="flex items-center gap-4">
-                  <span className="text-4xl">{selectedPost.image}</span>
-                  <div>
-                    <span className="bg-[#D6E2B4] text-[#3D5919] px-3 py-1 rounded-full text-sm font-semibold montserrat-medium">
-                      {selectedPost.category}
-                    </span>
-                    <h2 className="text-2xl font-bold text-[#3D5919] mt-2 playfair-display">{selectedPost.title}</h2>
-                  </div>
-                </div>
-                <button
-                  onClick={closeModal}
-                  className="text-gray-500 hover:text-gray-700 transition-colors"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-              <div className="flex items-center gap-4 mt-4 text-sm text-gray-500 montserrat-medium">
-                <span>{selectedPost.date}</span>
-                <span>•</span>
-                <span>{selectedPost.readTime}</span>
-              </div>
-            </div>
-            <div className="p-6">
-              <p className="text-gray-700 leading-relaxed mb-6 montserrat-medium">{selectedPost.content}</p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {selectedPost.tags.map((tag, index) => (
-                  <span key={index} className="bg-[#D6E2B4] text-[#3D5919] px-3 py-1 rounded-full text-sm montserrat-medium">
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-              <div className="text-center">
-  <a
-    href="#rendez-vous"
-    className="bg-[#3D5919] text-white px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium inline-block w-full max-w-xs sm:max-w-md md:max-w-lg"
-  >
-    Prendre rendez-vous pour en savoir plus
-  </a>
-</div>
-
+  <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="bg-white rounded-lg max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div className="p-6 border-b border-gray-200">
+        <div className="flex justify-between items-start">
+          <div className="flex items-center gap-4">
+            <span className="text-4xl">{selectedPost.image}</span>
+            <div>
+              <span className="bg-[#D6E2B4] text-[#3D5919] px-3 py-1 rounded-full text-sm font-semibold montserrat-medium">
+                {selectedPost.category}
+              </span>
+              <h2 className="text-2xl font-bold text-[#3D5919] mt-2 playfair-display">{selectedPost.title}</h2>
             </div>
           </div>
+          <button
+            onClick={closeModal}
+            className="text-gray-500 hover:text-gray-700 transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
         </div>
-      )}
+        <div className="flex items-center gap-4 mt-4 text-sm text-gray-500 montserrat-medium">
+          <span>{selectedPost.date}</span>
+          <span>•</span>
+          <span>{selectedPost.readTime}</span>
+        </div>
+      </div>
+      <div className="p-6">
+        <p className="text-gray-700 leading-relaxed mb-6 montserrat-medium">{selectedPost.content}</p>
+        <div className="flex flex-wrap gap-2 mb-6">
+          {selectedPost.tags.map((tag, index) => (
+            <span key={index} className="bg-[#D6E2B4] text-[#3D5919] px-3 py-1 rounded-full text-sm montserrat-medium">
+              #{tag}
+            </span>
+          ))}
+        </div>
+        <div className="text-center">
+          <a
+            href="#rendez-vous"
+            onClick={closeModal}
+            className="bg-[#3D5919] text-white px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium inline-block w-full max-w-xs sm:max-w-md md:max-w-lg"
+          >
+            Prendre rendez-vous pour en savoir plus
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
     </section>
   );
 };
