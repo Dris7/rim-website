@@ -1434,7 +1434,21 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-white/20 mt-8 pt-8 text-center">
-          <p className="montserrat-medium">© 2025 Dt Rim Ajibe. Tous droits réservés.</p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4">
+            <p className="montserrat-medium">© 2025 Dt Rim Ajibe. Tous droits réservés.</p>
+            <span className="hidden sm:inline text-gray-400">•</span>
+            <p className="montserrat-medium">
+              Made by{' '}
+              <a 
+                href="https://nerdsdev.pro" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#D6E2B4] hover:text-white transition-colors font-semibold"
+              >
+                Nerdsdev
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
