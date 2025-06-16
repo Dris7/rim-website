@@ -1330,12 +1330,14 @@ const BlogSection = () => {
                 ))}
               </div>
               <div className="text-center">
-                <a href="#rendez-vous" className="bg-[#3D5919] text-white px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium">
-                  <span className="hidden sm:inline">Prendre rendez-vous pour en savoir plus</span>
-                  <span className="sm:hidden">Rendez-vous</span>
-                </a>
+  <a
+    href="#rendez-vous"
+    className="bg-[#3D5919] text-white px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium inline-block w-full max-w-xs sm:max-w-md md:max-w-lg"
+  >
+    Prendre rendez-vous pour en savoir plus
+  </a>
+</div>
 
-              </div>
             </div>
           </div>
         </div>
