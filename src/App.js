@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, Check, ArrowRight, Calendar, Mail, Phone, MapPin, Instagram, Facebook, Star, Users, Heart, Target, Clock, MessageCircle, ChevronLeft, ChevronRight, Plus, Minus } from 'lucide-react';
-
+import { ArrowLeft, Tag, Share2, BookOpen, User } from 'lucide-react';
 // Header Component
 const Header = ({ scrolled, isMenuOpen, setIsMenuOpen }) => {
   return (
@@ -146,8 +146,9 @@ const PhilosophySection = () => {
             "Il n'existe pas un régime parfait valable pour tous. Ce qui fonctionne, c'est ce qui est aligné avec votre corps."
           </blockquote>
           <div className="text-center mt-8">
-            <a href="#rendez-vous" className="bg-[#D6E2B4] text-[#3D5919] px-8 py-4 rounded-full text-lg hover:bg-white transition-all font-bold montserrat-medium">
-              Je prends mon rendez-vous !
+            <a href="#rendez-vous" className="bg-[#D6E2B4] text-[#3D5919] px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-white transition-all font-bold montserrat-medium">
+              <span className="hidden sm:inline">Je prends mon rendez-vous !</span>
+              <span className="sm:hidden">Rendez-vous</span>
             </a>
           </div>
         </div>
@@ -284,8 +285,9 @@ const BenefitsSection = () => {
           ))}
         </div>
         <div className="text-center mt-12">
-          <a href="#rendez-vous" className="bg-[#3D5919] text-white px-8 py-4 rounded-full text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium">
-            Réservez votre consultation gratuite !
+          <a href="#rendez-vous" className="bg-[#3D5919] text-white px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium">
+            <span className="hidden sm:inline">Réservez votre consultation gratuite !</span>
+            <span className="sm:hidden">Consultation gratuite</span>
           </a>
         </div>
       </div>
@@ -386,8 +388,9 @@ const PricingSection = () => {
           ))}
         </div>
         <div className="text-center mt-12">
-          <a href="#rendez-vous" className="bg-white text-[#3D5919] px-8 py-4 rounded-full text-lg hover:bg-gray-100 transition-all font-bold montserrat-medium">
-            Je réserve ma consultation de découverte gratuite !
+          <a href="#rendez-vous" className="bg-white text-[#3D5919] px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-gray-100 transition-all font-bold montserrat-medium">
+            <span className="hidden sm:inline">Je réserve ma consultation de découverte gratuite !</span>
+            <span className="sm:hidden">Consultation gratuite</span>
           </a>
         </div>
       </div>
@@ -548,8 +551,9 @@ const TestimonialsSection = () => {
           </div>
         </div>
         <div className="text-center mt-12">
-          <a href="#rendez-vous" className="bg-[#3D5919] text-white px-8 py-4 rounded-full text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium">
-            Je commence mon accompagnement !
+          <a href="#rendez-vous" className="bg-[#3D5919] text-white px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium">
+            <span className="hidden sm:inline">Je commence mon accompagnement !</span>
+            <span className="sm:hidden">Commencer !</span>
           </a>
         </div>
       </div>
@@ -678,53 +682,662 @@ const ResourcesSection = () => {
 };
 
 // Blog Section Component
+// Article Page Component
+const ArticlePage = ({ article, onBack }) => {
+  return (
+    <div className="min-h-screen bg-[#FDFCE9]">
+      {/* Google Fonts */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+      {/* Header */}
+      <header className="bg-white shadow-sm sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <button 
+              onClick={onBack}
+              className="flex items-center text-[#3D5919] hover:text-[#2A3F0F] transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5 mr-2" />
+              <span className="montserrat-medium">Retour au blog</span>
+            </button>
+            <div className="text-xl font-bold text-[#3D5919] playfair-display">Dt. Rim Ajibe</div>
+            <button className="flex items-center text-[#3D5919] hover:text-[#2A3F0F] transition-colors">
+              <Share2 className="w-5 h-5 mr-2" />
+              <span className="montserrat-medium">Partager</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Article Header */}
+      <section className="py-16 bg-gradient-to-br from-[#D6E2B4] to-[#FDFCE9]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="bg-[#3D5919] text-white px-4 py-2 rounded-full text-sm montserrat-medium">
+                {article.category}
+              </span>
+              <div className="flex items-center text-[#3D5919] text-sm montserrat-medium">
+                <Calendar className="w-4 h-4 mr-1" />
+                {article.date}
+              </div>
+              <div className="flex items-center text-[#3D5919] text-sm montserrat-medium">
+                <Clock className="w-4 h-4 mr-1" />
+                {article.readTime} de lecture
+              </div>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold text-[#3D5919] mb-6 playfair-display leading-tight">
+              {article.title}
+            </h1>
+            
+            <p className="text-xl text-gray-700 mb-8 montserrat-medium leading-relaxed">
+              {article.excerpt}
+            </p>
+
+            <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-[#3D5919] rounded-full flex items-center justify-center mr-3">
+                  <User className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="font-bold text-[#3D5919] playfair-display">Dr. Rim Ajibe</p>
+                  <p className="text-sm text-gray-600 montserrat-medium">Diététicienne Clinicienne & Nutritionniste</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {article.tags.map((tag, index) => (
+                <span key={index} className="flex items-center bg-white text-[#3D5919] px-3 py-1 rounded-full text-sm montserrat-medium">
+                  <Tag className="w-3 h-3 mr-1" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Article Image */}
+      <section className="py-8 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-[#D6E2B4] rounded-lg p-8 text-center">
+              <div className="text-6xl mb-4">{article.image}</div>
+              <p className="text-[#3D5919] italic montserrat-medium">{article.imagePrompt}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Article Content */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="prose prose-lg max-w-none">
+              {article.content.map((section, index) => (
+                <div key={index} className="mb-12">
+                  {section.type === 'heading' && (
+                    <h2 className="text-3xl font-bold text-[#3D5919] mb-6 playfair-display">
+                      {section.text}
+                    </h2>
+                  )}
+                  {section.type === 'subheading' && (
+                    <h3 className="text-2xl font-bold text-[#3D5919] mb-4 playfair-display">
+                      {section.text}
+                    </h3>
+                  )}
+                  {section.type === 'paragraph' && (
+                    <p className="text-gray-700 mb-6 montserrat-medium leading-relaxed text-lg">
+                      {section.text}
+                    </p>
+                  )}
+                  {section.type === 'list' && (
+                    <ul className="list-disc list-inside mb-6 space-y-2">
+                      {section.items.map((item, itemIndex) => (
+                        <li key={itemIndex} className="text-gray-700 montserrat-medium">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {section.type === 'highlight' && (
+                    <div className="bg-[#D6E2B4] p-6 rounded-lg mb-6">
+                      <p className="text-[#3D5919] font-semibold montserrat-medium text-lg">
+                        {section.text}
+                      </p>
+                    </div>
+                  )}
+                  {section.type === 'quote' && (
+                    <blockquote className="border-l-4 border-[#3D5919] pl-6 mb-6">
+                      <p className="text-xl italic text-[#3D5919] playfair-display">
+                        "{section.text}"
+                      </p>
+                    </blockquote>
+                  )}
+                  {section.type === 'case-study' && (
+                    <div className="bg-[#FDFCE9] border border-[#D6E2B4] rounded-lg p-6 mb-6">
+                      <h4 className="text-xl font-bold text-[#3D5919] mb-4 playfair-display">
+                        📋 Cas Clinique
+                      </h4>
+                      <div className="space-y-3">
+                        {section.content.map((item, itemIndex) => (
+                          <p key={itemIndex} className="text-gray-700 montserrat-medium">
+                            {item}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 bg-[#3D5919] text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h3 className="text-3xl font-bold mb-6 playfair-display">
+              Besoin d'un accompagnement personnalisé ?
+            </h3>
+            <p className="text-xl mb-8 montserrat-medium">
+              Profitez de mon expertise pour atteindre vos objectifs de santé
+            </p>
+            <a 
+              href="#rendez-vous" 
+              className="bg-[#D6E2B4] text-[#3D5919] px-8 py-4 rounded-full text-lg hover:bg-white transition-all transform hover:scale-105 font-bold montserrat-medium inline-block"
+            >
+              Réserver ma consultation gratuite
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
+        .playfair-display {
+          font-family: 'Playfair Display', serif;
+        }
+        .montserrat-medium {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 500;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+// Article Data
+const articles = {
+  nutrition: {
+    id: 'nutrition-personnalisee',
+    title: "L'approche scientifique de la nutrition personnalisée",
+    excerpt: "Comment la recherche moderne révolutionne notre compréhension des besoins nutritionnels individuels et pourquoi chaque métabolisme est unique.",
+    date: "20 Janvier 2025",
+    readTime: "8 min",
+    category: "Science & Nutrition",
+    image: "🧬",
+    imagePrompt: "Image d'ADN en double hélice avec des aliments colorés intégrés dans la structure génétique, fond scientifique moderne",
+    tags: ["Métabolisme", "Recherche", "Personnalisation"],
+    content: [
+      {
+        type: 'heading',
+        text: 'La révolution de la nutrition individualisée'
+      },
+      {
+        type: 'paragraph',
+        text: 'Dans un monde où les régimes "one-size-fits-all" dominent encore les discours nutritionnels, la science nous révèle une vérité fondamentale : chaque individu possède des besoins nutritionnels uniques. Cette révolution de la nutrition personnalisée transforme radicalement notre approche thérapeutique.'
+      },
+      {
+        type: 'subheading',
+        text: 'La génétique nutritionnelle : au cœur de l\'individualité'
+      },
+      {
+        type: 'paragraph',
+        text: 'Les recherches récentes en nutrigénomique démontrent que nos gènes influencent directement notre métabolisme des macronutriments. Par exemple, les variations du gène AMY1 déterminent notre capacité à digérer l\'amidon, expliquant pourquoi certaines personnes tolèrent mieux les féculents que d\'autres.'
+      },
+      {
+        type: 'highlight',
+        text: 'Points clés de la recherche : 40% de la population présente une variation génétique affectant le métabolisme des graisses'
+      },
+      {
+        type: 'list',
+        items: [
+          'Les polymorphismes du gène FTO influencent la sensation de satiété',
+          'L\'expression du gène COMT module notre sensibilité au stress et nos besoins en magnésium',
+          'Le gène APOE détermine notre réponse aux graisses saturées'
+        ]
+      },
+      {
+        type: 'subheading',
+        text: 'Le microbiote : notre deuxième cerveau nutritionnel'
+      },
+      {
+        type: 'paragraph',
+        text: 'Le microbiote intestinal, composé de plus de 100 000 milliards de bactéries, agit comme un véritable laboratoire métabolique personnalisé. Les études montrent que la composition microbiotique influence l\'extraction calorique, la production de vitamines, la régulation inflammatoire et l\'axe intestin-cerveau.'
+      },
+      {
+        type: 'case-study',
+        content: [
+          'Sarah, 34 ans, consultait pour une prise de poids inexpliquée malgré un régime strict.',
+          'L\'analyse révéla : une résistance à l\'insuline masquée, un déficit en magnésium lié au stress chronique, une dysbiose intestinale post-antibiotiques.',
+          'Protocole personnalisé : réintroduction progressive des glucides complexes, supplémentation ciblée, gestion du stress.',
+          'Résultats à 3 mois : Perte de 8 kg, normalisation de l\'insulinémie, amélioration de 40% du score de fatigue.'
+        ]
+      },
+      {
+        type: 'subheading',
+        text: 'L\'approche clinique individualisée'
+      },
+      {
+        type: 'paragraph',
+        text: 'En pratique clinique, cette individualité se traduit par une évaluation multidimensionnelle incluant l\'analyse métabolique, l\'historique alimentaire et comportemental, et les biomarqueurs spécifiques.'
+      },
+      {
+        type: 'quote',
+        text: 'La nutrition personnalisée n\'est plus une utopie mais une réalité clinique qui nécessite une expertise approfondie pour traduire les données biologiques en recommandations pratiques et durables.'
+      }
+    ]
+  },
+  
+  tca: {
+    id: 'troubles-comportement-alimentaire',
+    title: "Démystifier les troubles du comportement alimentaire",
+    excerpt: "Une analyse approfondie des mécanismes psychologiques et physiologiques qui influencent notre relation à l'alimentation.",
+    date: "15 Janvier 2025",
+    readTime: "12 min",
+    category: "Psychologie Nutritionnelle",
+    image: "🧠",
+    imagePrompt: "Illustration artistique d'un cerveau avec des connexions synaptiques colorées, entouré d'aliments symbolisant l'équilibre nutritionnel",
+    tags: ["TCA", "Psychologie", "Thérapie"],
+    content: [
+      {
+        type: 'heading',
+        text: 'Comprendre la complexité des TCA'
+      },
+      {
+        type: 'paragraph',
+        text: 'Les troubles du comportement alimentaire (TCA) représentent l\'une des pathologies les plus complexes en nutrition clinique. Loin des clichés, ils touchent toutes les populations et nécessitent une compréhension approfondie des mécanismes neurobiologiques et psychologiques sous-jacents.'
+      },
+      {
+        type: 'subheading',
+        text: 'Neurobiologie des TCA : quand le cerveau dysfonctionne'
+      },
+      {
+        type: 'paragraph',
+        text: 'Les recherches en neuroimagerie révèlent des anomalies dans le système dopaminergique chez les patients souffrant de TCA : hyperactivation du cortex préfrontal, dysfonction de l\'insula, et déséquilibre du striatum.'
+      },
+      {
+        type: 'highlight',
+        text: 'Les neurotransmetteurs impliqués : Sérotonine (régule l\'humeur et la satiété), Dopamine (contrôle la motivation), GABA (neurotransmetteur inhibiteur principal)'
+      },
+      {
+        type: 'subheading',
+        text: 'Typologie clinique des TCA'
+      },
+      {
+        type: 'list',
+        items: [
+          'Anorexie mentale restrictive : restriction calorique extrême, distorsion de l\'image corporelle',
+          'Boulimie nerveuse : cycle restriction-compulsion-compensation',
+          'Hyperphagie boulimique : compulsions sans compensations, forte association avec l\'obésité'
+        ]
+      },
+      {
+        type: 'case-study',
+        content: [
+          'Emma, 19 ans - Anorexie mentale : IMC 15,2 kg/m², aménorrhée depuis 18 mois, apports 600-700 kcal/jour.',
+          'Protocole thérapeutique en 3 phases : stabilisation médicale, restructuration cognitive, consolidation.',
+          'Résultats à 1 an : poids stable à 50 kg, reprise des cycles menstruels, amélioration de l\'anxiété, réintégration scolaire réussie.'
+        ]
+      },
+      {
+        type: 'subheading',
+        text: 'Approche thérapeutique intégrée'
+      },
+      {
+        type: 'paragraph',
+        text: 'La prise en charge nécessite une approche multidisciplinaire combinant stabilisation médicale, restructuration cognitive et consolidation à long terme. Le travail sur l\'image corporelle et les déclencheurs émotionnels est essentiel.'
+      },
+      {
+        type: 'quote',
+        text: 'Les TCA sont des pathologies multifactorielles nécessitant une approche globale et spécialisée. La compréhension des mécanismes neurobiologiques permet d\'adapter les interventions thérapeutiques.'
+      }
+    ]
+  },
+  
+  micronutrition: {
+    id: 'micronutrition-maladies-chroniques',
+    title: "Micronutrition et maladies chroniques : état de la recherche",
+    excerpt: "Les dernières découvertes sur l'impact des micronutriments dans la prévention et la gestion des pathologies chroniques.",
+    date: "10 Janvier 2025",
+    readTime: "15 min",
+    category: "Nutrition Thérapeutique",
+    image: "⚕️",
+    imagePrompt: "Composition scientifique montrant des molécules de vitamines et minéraux en 3D, avec des cellules saines en arrière-plan",
+    tags: ["Micronutrition", "Maladies chroniques", "Prévention"],
+    content: [
+      {
+        type: 'heading',
+        text: 'Les micronutriments : acteurs clés de la santé'
+      },
+      {
+        type: 'paragraph',
+        text: 'L\'explosion des maladies chroniques (diabète, maladies cardiovasculaires, cancers, maladies auto-immunes) interpelle la communauté scientifique. Au-delà des macronutriments, les micronutriments émergent comme des acteurs clés dans la prévention et la prise en charge thérapeutique.'
+      },
+      {
+        type: 'subheading',
+        text: 'Fondements scientifiques de la micronutrition'
+      },
+      {
+        type: 'paragraph',
+        text: 'La micronutrition étudie l\'impact des micronutriments sur la santé. Contrairement à la nutrition classique centrée sur les calories, elle se focalise sur la densité nutritionnelle et la biodisponibilité.'
+      },
+      {
+        type: 'highlight',
+        text: 'Déficiences subcliniques : 80% de la population présente un déficit en vitamine D, 40% des femmes souffrent de carence en fer, 60% des adultes ont des apports insuffisants en oméga-3'
+      },
+      {
+        type: 'subheading',
+        text: 'Micronutrition et diabète de type 2'
+      },
+      {
+        type: 'list',
+        items: [
+          'Chrome : améliore la sensibilité à l\'insuline de 20-30%',
+          'Magnésium : régulateur de plus de 300 enzymes, déficit chez 75% des diabétiques',
+          'Acide alpha-lipoïque : prévient la neuropathie diabétique'
+        ]
+      },
+      {
+        type: 'subheading',
+        text: 'Maladies cardiovasculaires et oméga-3'
+      },
+      {
+        type: 'paragraph',
+        text: 'L\'EPA (acide eicosapentaénoïque) agit comme anti-inflammatoire puissant et réduit les triglycérides de 20-50%. Le DHA maintient la fluidité membranaire et protège contre l\'arythmie.'
+      },
+      {
+        type: 'case-study',
+        content: [
+          'Paul, 55 ans - Syndrome métabolique : tour de taille 108 cm, glycémie 1,15 g/L, triglycérides 2,8 g/L.',
+          'Bilan micronutritionnel : déficits en vitamine D, magnésium, déséquilibre oméga-6/oméga-3.',
+          'Protocole personnalisé : supplémentation ciblée + optimisation alimentaire.',
+          'Résultats à 6 mois : perte de 8 kg, normalisation des paramètres métaboliques, amélioration de 40% de la fatigue.'
+        ]
+      },
+      {
+        type: 'subheading',
+        text: 'Cancer et micronutrition préventive'
+      },
+      {
+        type: 'paragraph',
+        text: 'Le sélénium réduit le risque de cancer colorectal de 58%, la vitamine D régule l\'expression de plus de 1000 gènes, et la curcumine inhibe les facteurs inflammatoires.'
+      },
+      {
+        type: 'quote',
+        text: 'La micronutrition représente une approche thérapeutique complémentaire prometteuse dans la prise en charge des maladies chroniques, reposant sur une évaluation précise et une supplémentation personnalisée.'
+      }
+    ]
+  }
+};
+
+// Main Demo Component
+// Blog Section Component
 const BlogSection = () => {
+  const [selectedPost, setSelectedPost] = useState(null);
+
   const blogPosts = [
     {
+      id: 1,
       title: "Les bases d'une alimentation équilibrée",
       excerpt: "Découvrez les principes fondamentaux pour une nutrition saine et durable.",
       date: "15 Janvier 2025",
-      image: "🥗"
+      image: "🥗",
+      category: "Nutrition",
+      readTime: "5 min",
+      content: "Une alimentation équilibrée repose sur la variété et la modération. Il est essentiel d'inclure tous les groupes alimentaires : fruits et légumes, protéines, glucides complexes, et bonnes graisses. L'hydratation joue également un rôle crucial. Privilégiez les aliments non transformés et écoutez les signaux de votre corps.",
+      tags: ["équilibre", "nutrition", "santé"]
     },
     {
+      id: 2,
       title: "Mythe ou réalité : les féculents font-ils grossir ?",
       excerpt: "Démystifions ensemble les idées reçues sur les glucides complexes.",
       date: "10 Janvier 2025",
-      image: "🍞"
+      image: "🍞",
+      category: "Mythes",
+      readTime: "7 min",
+      content: "Les féculents ne font pas grossir par eux-mêmes. C'est la quantité, la qualité et l'accompagnement qui comptent. Les glucides complexes sont essentiels pour l'énergie et le bon fonctionnement du cerveau. Choisissez des féculents complets et adaptez les portions à vos besoins énergétiques.",
+      tags: ["féculents", "glucides", "perte de poids"]
     },
     {
+      id: 3,
       title: "Comment maintenir sa motivation sur le long terme",
       excerpt: "Les clés psychologiques pour réussir votre transformation nutritionnelle.",
       date: "5 Janvier 2025",
-      image: "💪"
+      image: "💪",
+      category: "Psychologie",
+      readTime: "6 min",
+      content: "La motivation fluctue naturellement. L'important est de créer des habitudes durables plutôt que de dépendre uniquement de la motivation. Fixez-vous des objectifs réalistes, célébrez les petites victoires, et n'hésitez pas à demander du soutien. La patience et la bienveillance envers soi-même sont essentielles.",
+      tags: ["motivation", "habitudes", "psychologie"]
+    },
+    {
+      id: 4,
+      title: "Hydratation : combien d'eau boire par jour ?",
+      excerpt: "L'importance de l'hydratation dans votre équilibre nutritionnel.",
+      date: "1 Janvier 2025",
+      image: "💧",
+      category: "Hydratation",
+      readTime: "4 min",
+      content: "Les besoins en eau varient selon l'âge, l'activité physique et le climat. En général, 1,5 à 2L par jour sont recommandés. L'eau aide à la digestion, au transport des nutriments et à l'élimination des déchets. Écoutez votre soif et observez la couleur de vos urines comme indicateur d'hydratation.",
+      tags: ["hydratation", "eau", "santé"]
+    },
+    {
+      id: 5,
+      title: "Gestion du stress et alimentation émotionnelle",
+      excerpt: "Comment le stress influence nos choix alimentaires et que faire.",
+      date: "28 Décembre 2024",
+      image: "🧘‍♀️",
+      category: "Bien-être",
+      readTime: "8 min",
+      content: "Le stress chronique peut perturber nos habitudes alimentaires. Il est important de reconnaître les signaux de faim émotionnelle versus physique. Des techniques de gestion du stress comme la méditation, la respiration profonde et l'activité physique peuvent aider à retrouver un rapport sain à l'alimentation.",
+      tags: ["stress", "émotions", "bien-être"]
+    },
+    {
+      id: 6,
+      title: "Nutrition pendant l'exercice physique",
+      excerpt: "Optimiser votre alimentation avant, pendant et après l'effort.",
+      date: "20 Décembre 2024",
+      image: "🏃‍♀️",
+      category: "Sport",
+      readTime: "9 min",
+      content: "L'alimentation autour de l'exercice doit être adaptée à l'intensité et à la durée de l'effort. Avant : privilégiez les glucides. Pendant : hydratez-vous régulièrement. Après : combinez protéines et glucides pour la récupération. La timing et la composition des repas jouent un rôle crucial dans les performances.",
+      tags: ["sport", "performance", "récupération"]
     }
   ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState('Tous');
+  const postsPerPage = 3;
+
+  const categories = ['Tous', ...new Set(blogPosts.map(post => post.category))];
+
+  const filteredPosts = selectedCategory === 'Tous' 
+    ? blogPosts 
+    : blogPosts.filter(post => post.category === selectedCategory);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
+  const handleReadMore = (post) => {
+    setSelectedPost(post);
+  };
+
+  const closeModal = () => {
+    setSelectedPost(null);
+  };
 
   return (
     <section id="blog" className="py-20 bg-[#D6E2B4]">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#3D5919] text-center mb-12 playfair-display">Blog</h2>
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {blogPosts.map((post, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#3D5919] text-center mb-8 playfair-display">Blog</h2>
+        <p className="text-center text-[#3D5919] mb-12 montserrat-medium max-w-2xl mx-auto">
+          Découvrez mes conseils, astuces et réflexions pour une vie plus saine et équilibrée
+        </p>
+
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => {
+                setSelectedCategory(category);
+                setCurrentPage(1);
+              }}
+              className={`px-4 py-2 rounded-full transition-all montserrat-medium ${
+                selectedCategory === category
+                  ? 'bg-[#3D5919] text-white'
+                  : 'bg-white text-[#3D5919] hover:bg-[#3D5919] hover:text-white'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Blog Posts Grid */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+          {currentPosts.map((post) => (
+            <div key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-1">
               <div className="p-6">
-                <div className="text-4xl mb-4 text-center">{post.image}</div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-3xl">{post.image}</span>
+                  <span className="bg-[#D6E2B4] text-[#3D5919] px-3 py-1 rounded-full text-xs font-semibold montserrat-medium">
+                    {post.category}
+                  </span>
+                </div>
                 <h3 className="text-xl font-bold text-[#3D5919] mb-3 playfair-display">{post.title}</h3>
                 <p className="text-gray-600 mb-4 montserrat-medium">{post.excerpt}</p>
+                <div className="flex flex-wrap gap-1 mb-4">
+                  {post.tags.map((tag, index) => (
+                    <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded montserrat-medium">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500 montserrat-medium">{post.date}</span>
-                  <a href="#" className="text-[#3D5919] hover:text-[#2A3F0F] font-semibold montserrat-medium">Lire plus →</a>
+                  <div className="text-sm text-gray-500 montserrat-medium">
+                    <span>{post.date}</span> • <span>{post.readTime}</span>
+                  </div>
+                  <button 
+                    onClick={() => handleReadMore(post)}
+                    className="text-[#3D5919] hover:text-[#2A3F0F] font-semibold montserrat-medium flex items-center group"
+                  >
+                    Lire plus 
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <a href="#" className="bg-[#3D5919] text-white px-8 py-4 rounded-full text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium">
-            Voir tous les articles
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2 mb-8">
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="p-2 rounded-full bg-white text-[#3D5919] disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#3D5919] hover:text-white transition-all"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPage(index + 1)}
+                className={`w-10 h-10 rounded-full transition-all montserrat-medium ${
+                  currentPage === index + 1
+                    ? 'bg-[#3D5919] text-white'
+                    : 'bg-white text-[#3D5919] hover:bg-[#3D5919] hover:text-white'
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+            
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className="p-2 rounded-full bg-white text-[#3D5919] disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#3D5919] hover:text-white transition-all"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        )}
+
+        <div className="text-center">
+          <a href="#rendez-vous" className="bg-[#3D5919] text-white px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium">
+            <span className="hidden sm:inline">Besoin de conseils personnalisés ?</span>
+            <span className="sm:hidden">Conseils personnalisés</span>
           </a>
         </div>
       </div>
+
+      {/* Blog Post Modal */}
+      {selectedPost && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-gray-200">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl">{selectedPost.image}</span>
+                  <div>
+                    <span className="bg-[#D6E2B4] text-[#3D5919] px-3 py-1 rounded-full text-sm font-semibold montserrat-medium">
+                      {selectedPost.category}
+                    </span>
+                    <h2 className="text-2xl font-bold text-[#3D5919] mt-2 playfair-display">{selectedPost.title}</h2>
+                  </div>
+                </div>
+                <button
+                  onClick={closeModal}
+                  className="text-gray-500 hover:text-gray-700 transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="flex items-center gap-4 mt-4 text-sm text-gray-500 montserrat-medium">
+                <span>{selectedPost.date}</span>
+                <span>•</span>
+                <span>{selectedPost.readTime}</span>
+              </div>
+            </div>
+            <div className="p-6">
+              <p className="text-gray-700 leading-relaxed mb-6 montserrat-medium">{selectedPost.content}</p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedPost.tags.map((tag, index) => (
+                  <span key={index} className="bg-[#D6E2B4] text-[#3D5919] px-3 py-1 rounded-full text-sm montserrat-medium">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+              <div className="text-center">
+                <a href="#rendez-vous" className="bg-[#3D5919] text-white px-6 py-3 rounded-full hover:bg-[#2A3F0F] transition-all montserrat-medium">
+                  Prendre rendez-vous pour en savoir plus
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
@@ -832,6 +1445,7 @@ const Footer = () => {
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentArticle, setCurrentArticle] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -853,6 +1467,15 @@ const App = () => {
       });
     };
   }, []);
+  
+  if (currentArticle) {
+    return (
+      <ArticlePage 
+        article={articles[currentArticle]} 
+        onBack={() => setCurrentArticle(null)}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FDFCE9]">
