@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, Check, ArrowRight, Calendar, Mail, Phone, MapPin, Instagram, Facebook, Star, Users, Heart, Target, Clock, MessageCircle, ChevronLeft, ChevronRight, Plus, Minus } from 'lucide-react';
+import { ChevronDown, Menu, X, Check, ArrowRight, Calendar, Mail, Phone, MapPin, Instagram, Facebook, Star, Users, Heart, Target, Clock, MessageCircle, ChevronLeft, ChevronRight, Plus, Minus, Scale } from 'lucide-react';
 import { ArrowLeft, Tag, Share2, BookOpen, User } from 'lucide-react';
 // Header Component
 const Header = ({ scrolled, isMenuOpen, setIsMenuOpen }) => {
@@ -10,20 +10,20 @@ const Header = ({ scrolled, isMenuOpen, setIsMenuOpen }) => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold text-[#3D5919] playfair-display">Dt. Rim Ajibe</div>
+        <div className={`text-xl font-bold playfair-display ${scrolled ? 'text-[#3D5919]' : 'text-white'}`}>Dt. Rim Ajibe</div>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#accueil" className="text-[#3D5919] hover:text-[#D6E2B4] transition-colors montserrat-medium">Accueil</a>
-          <a href="#services" className="text-[#3D5919] hover:text-[#D6E2B4] transition-colors montserrat-medium">Services</a>
-          <a href="#qui-suis-je" className="text-[#3D5919] hover:text-[#D6E2B4] transition-colors montserrat-medium">Qui suis-je ?</a>
-          <a href="#ressources" className="text-[#3D5919] hover:text-[#D6E2B4] transition-colors montserrat-medium">Ressources</a>
-          <a href="#blog" className="text-[#3D5919] hover:text-[#D6E2B4] transition-colors montserrat-medium">Blog</a>
+          <a href="#accueil" className={`${scrolled ? 'text-[#3D5919]' : 'text-white'} hover:text-[#D6E2B4] transition-colors montserrat-medium`}>Accueil</a>
+          <a href="#services" className={`${scrolled ? 'text-[#3D5919]' : 'text-white'} hover:text-[#D6E2B4] transition-colors montserrat-medium`}>Services</a>
+          <a href="#qui-suis-je" className={`${scrolled ? 'text-[#3D5919]' : 'text-white'} hover:text-[#D6E2B4] transition-colors montserrat-medium`}>Qui suis-je ?</a>
+          <a href="#ressources" className={`${scrolled ? 'text-[#3D5919]' : 'text-white'} hover:text-[#D6E2B4] transition-colors montserrat-medium`}>Ressources</a>
+          <a href="#blog" className={`${scrolled ? 'text-[#3D5919]' : 'text-white'} hover:text-[#D6E2B4] transition-colors montserrat-medium`}>Blog</a>
           <a href="#rendez-vous" className="bg-[#3D5919] text-white px-6 py-2 rounded-full hover:bg-[#2A3F0F] transition-colors montserrat-medium">Rendez-vous</a>
         </div>
 
         {/* Mobile Menu Button */}
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-[#3D5919]">
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`md:hidden ${scrolled ? 'text-[#3D5919]' : 'text-white'}`}>
           {isMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
@@ -45,29 +45,27 @@ const Header = ({ scrolled, isMenuOpen, setIsMenuOpen }) => {
   );
 };
 
-// Hero Section Component
+
+// Hero Section Component with background image
 const HeroSection = () => {
   return (
-    <section id="accueil" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FDFCE9] to-[#D6E2B4] pt-20">
-      <div className="container mx-auto px-4 py-16">
+    <section 
+      id="accueil" 
+      className="min-h-screen flex items-center justify-center pt-20 bg-cover bg-center relative"
+      style={{ backgroundImage: `url(${require('./First_Picture.jpg')})` }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-black/70 to-black/70"></div>
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-[#3D5919] mb-6 animate-fade-in playfair-display">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in playfair-display">
             Prise en charge 360°
           </h1>
-          <p className="text-xl md:text-2xl text-[#3D5919] mb-8 max-w-3xl mx-auto montserrat-medium">
+          <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto montserrat-medium">
             Réapprendre à manger, rétablir l'équilibre, et reconstruire son mode de vie
           </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="#rendez-vous" className="bg-[#3D5919] text-white px-8 py-4 rounded-full text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium">
-              Consultation Gratuite
-            </a>
-            <a href="#services" className="border-2 border-[#3D5919] text-[#3D5919] px-8 py-4 rounded-full text-lg hover:bg-[#3D5919] hover:text-white transition-all montserrat-medium">
-              Découvrir mes services
-            </a>
-          </div>
         </div>
         <div className="mt-16 text-center">
-          <ChevronDown className="w-8 h-8 text-[#3D5919] animate-bounce mx-auto" />
+          <ChevronDown className="w-8 h-8 text-white animate-bounce mx-auto" />
         </div>
       </div>
     </section>
@@ -81,9 +79,9 @@ const QuoteSection = ({ quote, author, bgColor = "bg-[#D6E2B4]" }) => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-4xl mx-auto">
           <blockquote className="text-3xl md:text-4xl font-bold italic text-[#3D5919] mb-4 playfair-display">
-            "{quote}"
+            {quote}
           </blockquote>
-          {author && <p className="text-xl text-[#3D5919] montserrat-medium">– {author}</p>}
+          {author && <p className="text-3xl md:text-4xl font-bold italic text-[#3D5919] playfair-display">{author}</p>}
         </div>
       </div>
     </section>
@@ -93,7 +91,7 @@ const QuoteSection = ({ quote, author, bgColor = "bg-[#D6E2B4]" }) => {
 // About Section Component
 const AboutSection = () => {
   return (
-    <section id="qui-suis-je" className="py-20 bg-[#FDFCE9]">
+    <section id="qui-suis-je" className="py-20 bg-[#FFFFD]">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
@@ -104,7 +102,7 @@ const AboutSection = () => {
             <p className="text-lg text-gray-700 montserrat-medium">
               Mon approche repose sur une <span className="font-bold">conviction</span> simple :
             </p>
-            <p className="text-lg italic text-[#3D5919] bg-white p-4 rounded-lg shadow-lg playfair-display">
+            <p className="text-lg italic text-[#3D5919] p-4 rounded-lg shadow-lg playfair-display">
               L'alimentation doit nourrir, soutenir la santé et apporter du réconfort, jamais devenir une source de stress ou de confusion.
             </p>
             <p className="text-lg text-gray-700 montserrat-medium">
@@ -113,12 +111,11 @@ const AboutSection = () => {
             </p>
           </div>
           <div className="relative">
-            <div className="bg-[#D6E2B4] rounded-full w-80 h-80 mx-auto flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🌿</div>
-                <p className="text-[#3D5919] font-bold text-xl montserrat-medium">Nutrition & Santé</p>
-              </div>
-            </div>
+            <img 
+              src={require('./rim.jpg')}
+              alt="Dt. Rim Ajibe" 
+              className="rounded-full shadow-xl w-full max-w-md mx-auto object-cover aspect-square"
+            />
           </div>
         </div>
       </div>
@@ -129,14 +126,18 @@ const AboutSection = () => {
 // Philosophy Section Component
 const PhilosophySection = () => {
   return (
-    <section className="py-20 bg-[#3D5919] text-white">
-      <div className="container mx-auto px-4">
+    <section 
+    className="py-20 bg-[#3D5919] text-white relative bg-cover bg-center"
+    style={{ backgroundImage: `url(${require('./Ma_philosophie.jpg')})` }}
+     >
+      <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-black/50"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center playfair-display">Ma philosophie</h2>
         <div className="max-w-4xl mx-auto space-y-8">
           <p className="text-2xl font-bold text-center mb-8 montserrat-medium">
             Je ne défends aucune tendance alimentaire. Je défends ce qui fonctionne pour vous.
           </p>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white/10 p-6 rounded-lg">
               <h3 className="text-xl font-bold mb-4 playfair-display">Approche scientifique</h3>
               <p className="montserrat-medium">Ma pratique repose sur des recommandations scientifiques fiables et actualisées. Je ne catégorise ni les glucides, ni les lipides, ni aucun type d'alimentation.</p>
@@ -145,9 +146,19 @@ const PhilosophySection = () => {
               <h3 className="text-xl font-bold mb-4 playfair-display">Personnalisation</h3>
               <p className="montserrat-medium">Chaque personne est unique, et mon rôle est de m'adapter à votre état de santé, vos besoins réels, et vos objectifs.</p>
             </div>
+            <div className="bg-white/10 p-6 rounded-lg">
+              <h3 className="text-xl font-bold mb-4 playfair-display">Mission</h3>
+              <p className="montserrat-medium">Je vous accompagne pour restaurer la physiologie naturelle de votre corps et traiter les causes profondes de vos symptômes. Cela passe par un travail solide sur les bases de la nutrition, dans une logique de compréhension, pas de restriction.</p>
+            </div>
           </div>
           <blockquote className="text-xl italic text-center mt-8 p-6 bg-white/10 rounded-lg playfair-display">
-            "Il n'existe pas un régime parfait valable pour tous. Ce qui fonctionne, c'est ce qui est aligné avec votre corps."
+            "Il n'existe pas un régime parfait valable pour tous. Ce qui fonctionne, c'est ce qui est aligné avec votre corps.
+            <br /><br />
+            Que ce soit une alimentation méditerranéenne, un jeûne intermittent, une approche cétogène ou autre... Ce n'est ni une mode, ni un choix arbitraire.
+            <br /><br />
+            C'est votre santé qui nous guide."
+            <br /><br />
+            Dt. Rim Ajibe
           </blockquote>
           <div className="text-center mt-8">
             <a href="#rendez-vous" className="bg-[#D6E2B4] text-[#3D5919] px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-white transition-all font-bold montserrat-medium">
@@ -163,26 +174,46 @@ const PhilosophySection = () => {
 
 // Services Section Component
 const ServicesSection = () => {
-  const [expandedService, setExpandedService] = useState(null);
+  const [expandedService1, setExpandedService1] = useState(false);
+  const [expandedService2, setExpandedService2] = useState(false);
+  const [expandedService3, setExpandedService3] = useState(false);
 
   const services = [
-    { 
-      title: "Prise et Perte de Poids", 
-      icon: <Target className="w-6 h-6" />,
-      buttonText: "Lire plus",
-      details: "En cas de troubles émotionnels ou psychologiques liés au poids, le suivi est possible uniquement si un accompagnement psychologique est déjà en place."
+    {
+      title: "Prise et perte de poids",
+      icon: Scale,
+      image: './Services_Prise_et_perte_de_poids.jpg',
+      description: "Approche personnalisée pour atteindre vos objectifs de poids de manière saine et durable.",
+      bulletPoints: [
+        "Évaluation complète de votre profil",
+        "Plan alimentaire sur mesure",
+        "Suivi régulier et ajustements",
+        "Éducation nutritionnelle"
+      ]
     },
-    { 
-      title: "Nutrition Thérapeutique", 
-      icon: <Heart className="w-6 h-6" />,
-      buttonText: "Découvrir la suite",
-      details: "Suivi possible pour la majorité des maladies chroniques; si les recommandations et traitements médicaux sont respectés. Le suivi ne s'adresse pas aux femmes enceintes."
+    {
+      title: "Nutrition thérapeutique",
+      icon: Heart,
+      image: './Services_Nutrition_thérapeutique.jpg',
+      description: "Prise en charge nutritionnelle des pathologies chroniques.",
+      bulletPoints: [
+        "Diabète et prédiabète",
+        "Maladies cardiovasculaires",
+        "Troubles digestifs",
+        "Maladies auto-immunes"
+      ]
     },
-    { 
-      title: "Nutrition Sportive", 
-      icon: <Users className="w-6 h-6" />,
-      buttonText: "Voir les détails",
-      details: "Pour débutants et sportifs de haut niveau, sauf en cas de dopage ou d'objectifs contraires au bien-être physique."
+    {
+      title: "Nutrition sportive",
+      icon: Target,
+      image: './Services_Nutrition_sportive.jpg',
+      description: "Optimisation des performances et de la récupération par l'alimentation.",
+      bulletPoints: [
+        "Plan nutritionnel adapté à votre sport",
+        "Stratégies pré et post-entraînement",
+        "Supplémentation ciblée",
+        "Gestion du poids optimal"
+      ]
     }
   ];
 
@@ -192,28 +223,129 @@ const ServicesSection = () => {
         <h2 className="text-4xl md:text-5xl font-bold text-[#3D5919] text-center mb-12 playfair-display">
           J'accompagne les femmes, les hommes et les enfants pour :
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="p-8">
-                <div className="flex items-center mb-4">
-                  <div className="bg-[#D6E2B4] p-3 rounded-full mr-4">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#3D5919] playfair-display">{service.title}</h3>
-                </div>
-                <button
-                  onClick={() => setExpandedService(expandedService === index ? null : index)}
-                  className="text-[#3D5919] hover:text-[#2A3F0F] font-semibold flex items-center montserrat-medium"
-                >
-                  {expandedService === index ? 'Masquer' : service.buttonText} <ArrowRight className="w-4 h-4 ml-2" />
-                </button>
-                {expandedService === index && (
-                  <p className="mt-4 text-gray-600 animate-fade-in montserrat-medium">{service.details}</p>
-                )}
+        <div className="grid md:grid-cols-3 gap-8 items-start">
+          {/* Service 1 */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            {services[0].image && (
+              <div className="h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                <img 
+                  src={require('./Services_Prise_et_perte_de_poids.jpg')} 
+                  alt={services[0].title}
+                  className="object-contain hover:scale-110 transition-transform duration-300"
+                />
               </div>
+            )}
+            <div className="p-6">
+              <div className="flex items-center mb-4">
+                <div className="bg-[#D6E2B4] p-3 rounded-full mr-4">
+                  <Scale className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#3D5919] playfair-display">{services[0].title}</h3>
+              </div>
+              <p className="text-gray-600 mb-4 montserrat-medium">{services[0].description}</p>
+              <button
+                onClick={() => setExpandedService1(!expandedService1)}
+                className="text-[#3D5919] hover:text-[#2A3F0F] font-semibold flex items-center montserrat-medium"
+              >
+                {expandedService1 ? 'Masquer' : 'Voir les détails'} 
+                {expandedService1 ? <Minus className="w-4 h-4 ml-2" /> : <Plus className="w-4 h-4 ml-2" />}
+              </button>
+              {expandedService1 && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                  <ul className="space-y-2">
+                    {services[0].bulletPoints.map((point, index) => (
+                      <li key={index} className="flex items-start">
+                        <Check className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                        <span className="text-gray-600 montserrat-medium">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
-          ))}
+          </div>
+
+          {/* Service 2 */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            {services[1].image && (
+              <div className="h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                <img 
+                  src={require('./Services_Nutrition_thérapeutique.jpg')} 
+                  alt={services[1].title}
+                  className=" object-contain hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            )}
+            <div className="p-6">
+              <div className="flex items-center mb-4">
+                <div className="bg-[#D6E2B4] p-3 rounded-full mr-4">
+                  <Heart className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#3D5919] playfair-display">{services[1].title}</h3>
+              </div>
+              <p className="text-gray-600 mb-4 montserrat-medium">{services[1].description}</p>
+              <button
+                onClick={() => setExpandedService2(!expandedService2)}
+                className="text-[#3D5919] hover:text-[#2A3F0F] font-semibold flex items-center montserrat-medium"
+              >
+                {expandedService2 ? 'Masquer' : 'Voir les détails'} 
+                {expandedService2 ? <Minus className="w-4 h-4 ml-2" /> : <Plus className="w-4 h-4 ml-2" />}
+              </button>
+              {expandedService2 && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                  <ul className="space-y-2">
+                    {services[1].bulletPoints.map((point, index) => (
+                      <li key={index} className="flex items-start">
+                        <Check className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                        <span className="text-gray-600 montserrat-medium">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Service 3 */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            {services[2].image && (
+              <div className="h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                <img 
+                  src={require('./Services_Nutrition_sportive.jpg')} 
+                  alt={services[2].title}
+                  className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            )}
+            <div className="p-6">
+              <div className="flex items-center mb-4">
+                <div className="bg-[#D6E2B4] p-3 rounded-full mr-4">
+                  <Target className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#3D5919] playfair-display">{services[2].title}</h3>
+              </div>
+              <p className="text-gray-600 mb-4 montserrat-medium">{services[2].description}</p>
+              <button
+                onClick={() => setExpandedService3(!expandedService3)}
+                className="text-[#3D5919] hover:text-[#2A3F0F] font-semibold flex items-center montserrat-medium"
+              >
+                {expandedService3 ? 'Masquer' : 'Voir les détails'} 
+                {expandedService3 ? <Minus className="w-4 h-4 ml-2" /> : <Plus className="w-4 h-4 ml-2" />}
+              </button>
+              {expandedService3 && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                  <ul className="space-y-2">
+                    {services[2].bulletPoints.map((point, index) => (
+                      <li key={index} className="flex items-start">
+                        <Check className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                        <span className="text-gray-600 montserrat-medium">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -222,7 +354,9 @@ const ServicesSection = () => {
 
 // Benefits Section Component
 const BenefitsSection = () => {
-  const [expandedBenefit, setExpandedBenefit] = useState(null);
+  const [expandedBenefit1, setExpandedBenefit1] = useState(false);
+  const [expandedBenefit2, setExpandedBenefit2] = useState(false);
+  const [expandedBenefit3, setExpandedBenefit3] = useState(false);
 
   const benefits = [
     {
@@ -262,31 +396,84 @@ const BenefitsSection = () => {
     <section className="py-20 bg-[#D6E2B4]">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-[#3D5919] text-center mb-12 playfair-display">Vous bénéficiez de :</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-[#3D5919] mb-4 playfair-display">{benefit.title}</h3>
-                <button
-                  onClick={() => setExpandedBenefit(expandedBenefit === index ? null : index)}
-                  className="text-[#3D5919] hover:text-[#2A3F0F] font-semibold flex items-center montserrat-medium"
-                >
-                  {expandedBenefit === index ? 'Masquer' : benefit.buttonText}
-                  {expandedBenefit === index ? <Minus className="w-4 h-4 ml-2" /> : <Plus className="w-4 h-4 ml-2" />}
-                </button>
-                {expandedBenefit === index && (
-                  <ul className="mt-4 space-y-2 animate-fade-in">
-                    {benefit.details.map((detail, detailIndex) => (
+        <div className="grid md:grid-cols-3 gap-8 items-start">
+          {/* Benefit 1 */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-[#3D5919] mb-4 playfair-display">{benefits[0].title}</h3>
+              <button
+                onClick={() => setExpandedBenefit1(!expandedBenefit1)}
+                className="text-[#3D5919] hover:text-[#2A3F0F] font-semibold flex items-center montserrat-medium"
+              >
+                {expandedBenefit1 ? 'Masquer' : benefits[0].buttonText}
+                {expandedBenefit1 ? <Minus className="w-4 h-4 ml-2" /> : <Plus className="w-4 h-4 ml-2" />}
+              </button>
+              {expandedBenefit1 && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                  <ul className="space-y-2">
+                    {benefits[0].details.map((detail, detailIndex) => (
                       <li key={detailIndex} className="flex items-start">
                         <Check className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
                         <span className="text-gray-600 montserrat-medium">{detail}</span>
                       </li>
                     ))}
                   </ul>
-                )}
-              </div>
+                </div>
+              )}
             </div>
-          ))}
+          </div>
+
+          {/* Benefit 2 */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-[#3D5919] mb-4 playfair-display">{benefits[1].title}</h3>
+              <button
+                onClick={() => setExpandedBenefit2(!expandedBenefit2)}
+                className="text-[#3D5919] hover:text-[#2A3F0F] font-semibold flex items-center montserrat-medium"
+              >
+                {expandedBenefit2 ? 'Masquer' : benefits[1].buttonText}
+                {expandedBenefit2 ? <Minus className="w-4 h-4 ml-2" /> : <Plus className="w-4 h-4 ml-2" />}
+              </button>
+              {expandedBenefit2 && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                  <ul className="space-y-2">
+                    {benefits[1].details.map((detail, detailIndex) => (
+                      <li key={detailIndex} className="flex items-start">
+                        <Check className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                        <span className="text-gray-600 montserrat-medium">{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Benefit 3 */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-[#3D5919] mb-4 playfair-display">{benefits[2].title}</h3>
+              <button
+                onClick={() => setExpandedBenefit3(!expandedBenefit3)}
+                className="text-[#3D5919] hover:text-[#2A3F0F] font-semibold flex items-center montserrat-medium"
+              >
+                {expandedBenefit3 ? 'Masquer' : benefits[2].buttonText}
+                {expandedBenefit3 ? <Minus className="w-4 h-4 ml-2" /> : <Plus className="w-4 h-4 ml-2" />}
+              </button>
+              {expandedBenefit3 && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                  <ul className="space-y-2">
+                    {benefits[2].details.map((detail, detailIndex) => (
+                      <li key={detailIndex} className="flex items-start">
+                        <Check className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                        <span className="text-gray-600 montserrat-medium">{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
         <div className="text-center mt-12">
           <a href="#rendez-vous" className="bg-[#3D5919] text-white px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-[#2A3F0F] transition-all transform hover:scale-105 montserrat-medium">
@@ -336,7 +523,7 @@ const ProcessSection = () => {
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Curved line */}
-            <div className="absolute left-6 top-8 bottom-8 w-px bg-[#D6E2B4] hidden md:block"></div>
+            <div className="absolute left-6 top-8 bottom-8 w-px bg-gradient-to-b from-[#D6E2B4] via-[#3D5919] to-[#D6E2B4] hidden md:block rounded-full"></div>
             
             {processSteps.map((step, index) => (
               <div key={index} className="flex mb-8 animate-fade-in relative" style={{ animationDelay: `${index * 0.1}s` }}>
@@ -370,10 +557,10 @@ const PricingSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-[#3D5919]">
+    <section className="py-20 bg-[#FFFFD]">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-4 playfair-display">Formules et Tarifs</h2>
-        <p className="text-white text-center mb-12 italic montserrat-medium">**NOTE IMPORTANTE : Le paiement se fait en une seule fois.</p>
+        <h2 className="text-4xl md:text-5xl font-bold text-[#3D5919] text-center mb-4 playfair-display">Formules et Tarifs</h2>
+        <p className="text-[#3D5919] text-center mb-12 italic montserrat-medium">**NOTE IMPORTANTE : Le paiement se fait en une seule fois.</p>
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
             <div key={index} className={`rounded-lg p-8 text-center transform hover:scale-105 transition-transform ${plan.popular ? 'bg-white text-[#3D5919] scale-105' : 'bg-[#D6E2B4] text-[#3D5919]'}`}>
@@ -392,7 +579,7 @@ const PricingSection = () => {
           ))}
         </div>
         <div className="text-center mt-12">
-          <a href="#rendez-vous" className="bg-white text-[#3D5919] px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-gray-100 transition-all font-bold montserrat-medium">
+          <a href="#rendez-vous" className="bg-[#3D5919] text-white px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg hover:bg-[#2A3F0F] transition-all font-bold montserrat-medium">
             <span className="hidden sm:inline">Je réserve ma consultation de découverte gratuite !</span>
             <span className="sm:hidden">Consultation gratuite</span>
           </a>
@@ -405,7 +592,7 @@ const PricingSection = () => {
 // Important Notice Section Component
 const ImportantNoticeSection = () => {
   return (
-    <section className="py-20 bg-[#FDFCE9]">
+    <section className="py-20 bg-[#D6E2B4]">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl p-8 md:p-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#3D5919] mb-8 playfair-display">IMPORTANT... AVANT DE COMMENCER !</h2>
@@ -524,9 +711,7 @@ const TestimonialsSection = () => {
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <div className="flex space-x-2">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-                ))}
+                {/* Stars removed */}
               </div>
               <button
                 onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
@@ -1352,13 +1537,24 @@ const BlogSection = () => {
 
 // Footer Component
 const Footer = () => {
-  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterData, setNewsletterData] = useState({
+    firstName: '',
+    lastName: '',
+    email: ''
+  });
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
-    console.log('Newsletter subscription:', newsletterEmail);
+    console.log('Newsletter subscription:', newsletterData);
     alert('Merci pour votre inscription à la newsletter !');
-    setNewsletterEmail('');
+    setNewsletterData({ firstName: '', lastName: '', email: '' });
+  };
+
+  const handleNewsletterChange = (e) => {
+    setNewsletterData({
+      ...newsletterData,
+      [e.target.name]: e.target.value
+    });
   };
 
   return (
@@ -1370,12 +1566,24 @@ const Footer = () => {
             <p className="text-gray-300 mb-4 montserrat-medium">
               Diététicienne Clinicienne & Nutritionniste
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-[#D6E2B4] transition-colors">
+            <div className="flex flex-col space-y-2 text-sm">
+              <a href="tel:+212614216149" className="hover:text-[#D6E2B4] transition-colors flex items-center">
+                <Phone className="w-4 h-4 mr-2" />
+                +212 614-216149
+              </a>
+              <a href="mailto:dieteticienne.ajibe.rim@gmail.com" className="hover:text-[#D6E2B4] transition-colors flex items-center">
+                <Mail className="w-4 h-4 mr-2" />
+                dieteticienne.ajibe.rim@gmail.com
+              </a>
+            </div>
+            <div className="flex space-x-4 mt-4">
+              <a href="https://www.instagram.com/diet.rim.ajibe/" target="_blank" rel="noopener noreferrer" className="hover:text-[#D6E2B4] transition-colors">
                 <Instagram className="w-6 h-6" />
               </a>
-              <a href="#" className="hover:text-[#D6E2B4] transition-colors">
-                <Facebook className="w-6 h-6" />
+              <a href="https://www.linkedin.com/in/rim-ajibe-22a191338" target="_blank" rel="noopener noreferrer" className="hover:text-[#D6E2B4] transition-colors">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -1385,57 +1593,56 @@ const Footer = () => {
               <li><a href="#accueil" className="hover:text-[#D6E2B4] transition-colors">Accueil</a></li>
               <li><a href="#services" className="hover:text-[#D6E2B4] transition-colors">Services</a></li>
               <li><a href="#qui-suis-je" className="hover:text-[#D6E2B4] transition-colors">Qui suis-je ?</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4 playfair-display">Ressources</h4>
-            <ul className="space-y-2 montserrat-medium">
-              <li><a href="#ressources" className="hover:text-[#D6E2B4] transition-colors">Ressources</a></li>
               <li><a href="#blog" className="hover:text-[#D6E2B4] transition-colors">Blog</a></li>
-              <li><a href="#rendez-vous" className="hover:text-[#D6E2B4] transition-colors">Rendez-vous</a></li>
-              <li><a href="#faq" className="hover:text-[#D6E2B4] transition-colors">FAQ</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-4 playfair-display">Contact</h4>
+            <h4 className="font-bold mb-4 playfair-display">Liens Utiles</h4>
             <ul className="space-y-2 montserrat-medium">
-              <li className="flex items-center">
-                <Mail className="w-4 h-4 mr-2" />
-                <span>contact@rimajibe.ma</span>
-              </li>
-              <li className="flex items-center">
-                <Phone className="w-4 h-4 mr-2" />
-                <span>+212 6XX XXX XXX</span>
-              </li>
-              <li className="flex items-center">
-                <MapPin className="w-4 h-4 mr-2" />
-                <span>Casablanca, Maroc</span>
-              </li>
+              <li><a href="#processus" className="hover:text-[#D6E2B4] transition-colors">Processus</a></li>
+              <li><a href="#tarifs" className="hover:text-[#D6E2B4] transition-colors">Tarifs</a></li>
+              <li><a href="#faq" className="hover:text-[#D6E2B4] transition-colors">FAQ</a></li>
+              <li><a href="#temoignages" className="hover:text-[#D6E2B4] transition-colors">Témoignages</a></li>
             </ul>
           </div>
-        </div>
-        
-        {/* Newsletter Section */}
-        <div className="border-t border-white/20 mt-8 pt-8">
-          <div className="max-w-md mx-auto text-center">
-            <h4 className="font-bold mb-4 playfair-display">Le Rendez-vous Bien-être</h4>
+          <div>
+            <h4 className="font-bold mb-4 playfair-display">Newsletter</h4>
             <p className="text-gray-300 mb-4 montserrat-medium">
-              Je m'inscris pour prendre soin de moi, comprendre mon corps et mieux manger !
+              Restez informé(e) des dernières actualités
             </p>
-            <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
+            <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+              <input
+                type="text"
+                name="firstName"
+                value={newsletterData.firstName}
+                onChange={handleNewsletterChange}
+                placeholder="Prénom"
+                className="w-full px-4 py-2 rounded-full text-black focus:outline-none montserrat-medium"
+                required
+              />
+              <input
+                type="text"
+                name="lastName"
+                value={newsletterData.lastName}
+                onChange={handleNewsletterChange}
+                placeholder="Nom"
+                className="w-full px-4 py-2 rounded-full text-black focus:outline-none montserrat-medium"
+                required
+              />
               <input
                 type="email"
-                value={newsletterEmail}
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder="votre@email.com"
-                className="flex-1 px-4 py-2 rounded-full text-black focus:outline-none montserrat-medium"
+                name="email"
+                value={newsletterData.email}
+                onChange={handleNewsletterChange}
+                placeholder="Email"
+                className="w-full px-4 py-2 rounded-full text-black focus:outline-none montserrat-medium"
                 required
               />
               <button
                 type="submit"
-                className="bg-[#D6E2B4] text-[#3D5919] px-6 py-2 rounded-full hover:bg-white transition-colors font-bold montserrat-medium"
+                className="w-full bg-[#D6E2B4] text-[#3D5919] px-6 py-2 rounded-full hover:bg-white transition-colors font-bold montserrat-medium"
               >
-                Envoyez !
+                S'inscrire
               </button>
             </form>
           </div>
@@ -1540,20 +1747,12 @@ const App = () => {
       
       <ImportantNoticeSection />
       
-      <QuoteSection 
-        quote="Créez des habitudes saines et durables, sentez-vous plus fort et ayez plus d'énergie !"
-        bgColor="bg-[#3D5919] text-white"
-      />
       
       <TestimonialsSection />
       
       <FAQSection />
       
-      <ResourcesSection />
-      
-      <BlogSection />
-      
-      <ContactFormSection />
+      {/* <BlogSection /> */}
       
       <Footer />
 
